@@ -10,8 +10,9 @@
         <ImageBrush ImageSource="img/Background.jpg" />
     </Window.Background>
 
+
     <Grid x:Name="theGrid" Margin="20,20,30,0">
-        
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="56*"/>
@@ -45,17 +46,13 @@
                 <ImageBrush ImageSource="img/sprawdz.png"></ImageBrush>
             </Button.Background>
         </Button>
-        <Button Grid.ColumnSpan="3" Click="Button_Click_Restart" Grid.Column="4" Margin="0,40.6,0,26.4" Grid.Row="10" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
-            <Button.Background>
-                <ImageBrush ImageSource="img/new_game.png"></ImageBrush>
-            </Button.Background>
-        </Button>
-        <Button Click="Button_Click_Menu" Grid.Column="4" Margin="10,9.6,2,24.8" Grid.Row="10" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
+
+        <Button Click="Button_Click_Menu" Grid.Column="3" Margin="50,38.6,-4,26.4" Grid.Row="10" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="4" Grid.RowSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="img/menu.png"></ImageBrush>
             </Button.Background>
         </Button>
-    
+
     </Grid>
 
 

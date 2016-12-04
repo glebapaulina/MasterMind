@@ -239,17 +239,13 @@ namespace MasterMind
             SetupGame();
         }
 
-        //uruchamianie nowej gry
-        private void Button_Click_Restart(object sender, RoutedEventArgs e)
-        {
-            Gameboard gameboard = new Gameboard();
-            gameboard.Show();
-            this.Close();
-        }
+        //powrót do menu
 
         private void Button_Click_Menu(object sender, RoutedEventArgs e)
         {
-        
+            MainWindow menu = new MainWindow();
+            menu.Show();
+            this.Close();
 
         }
     }
