@@ -149,9 +149,6 @@
     <Content Include="img\menu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="img\new_game.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="img\start.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
