@@ -16,17 +16,25 @@ using System.Windows.Shapes;
 namespace MasterMind
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Menu.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Menu : UserControl
     {
-        public MainWindow()
+        public Menu()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.Content = new Menu();
         }
 
+        private void Button_Click_Start(object sender, RoutedEventArgs e)
+        {
+            this.Content = new Gameboard();
+
+        }
+
+        private void Button_Click_Exit(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+            parentWindow.Close();
+        }
     }
 }
-

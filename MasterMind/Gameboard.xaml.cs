@@ -10,24 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MasterMind
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for Gameboard.xaml
     /// </summary>
-    public partial class Gameboard : Window
+    public partial class Gameboard : UserControl
     {
+
         public Brush[] coloursToGuess = new Brush[4];
         Ellipse[,] bigPieces = new Ellipse[4, 11];
         Ellipse[,] smallPieces = new Ellipse[4, 11];
         int guess = -1;
         public Gameboard()
         {
-              
+
             InitializeComponent();
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
 
 
             //rysowanie dużych kółek
@@ -71,7 +73,7 @@ namespace MasterMind
                     piece2.Style = (Style)FindResource("SmallPiece");
                     piece2.Visibility = System.Windows.Visibility.Hidden;
                     stack.Children.Add(piece2);
-                    smallPieces[y+1, x] = piece2;
+                    smallPieces[y + 1, x] = piece2;
 
                 }
             }
@@ -86,15 +88,15 @@ namespace MasterMind
             SetupGame();
 
             //wywołanie sprawdzania odpowiedzi i uruchomienie nastepnej proby
-                NextGuess();
+            NextGuess();
 
             //wypełnianie klucza
-                bigPieces[0, 10].Fill = coloursToGuess[0];
-                bigPieces[1, 10].Fill = coloursToGuess[1];
-                bigPieces[2, 10].Fill = coloursToGuess[2];
-                bigPieces[3, 10].Fill = coloursToGuess[3];
-            }
-      
+            bigPieces[0, 10].Fill = coloursToGuess[0];
+            bigPieces[1, 10].Fill = coloursToGuess[1];
+            bigPieces[2, 10].Fill = coloursToGuess[2];
+            bigPieces[3, 10].Fill = coloursToGuess[3];
+        }
+
         //zmiana koloru kółka po kliknieciu
         public void Piece_Clicked(object sender, MouseButtonEventArgs e)
         {
@@ -124,7 +126,7 @@ namespace MasterMind
                     correct += 1;
                     corrects[x] = true;
                 }
-                
+
                 if (correct == 4)
                 {
                     MessageBox.Show("Wygrales");
@@ -133,7 +135,7 @@ namespace MasterMind
             }
             for (int x = 0; x < 4; x++)
             {
-                for (int i = 0; i < 4 ; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     if (corrects[i] == false && corrects[x] == false)
                     {
@@ -152,7 +154,7 @@ namespace MasterMind
                 smallPieces[x, guess].Visibility = Visibility.Visible;
                 smallPieces[x, guess].Fill = Brushes.Red;
             }
-            
+
             for (int x = correct; x < ((correctColour + correct)); x++)
             {
                 smallPieces[x, guess].Visibility = Visibility.Visible;
@@ -161,7 +163,7 @@ namespace MasterMind
             }
 
             NextGuess();
-            
+
         }
 
         //zmiana koloru na int
@@ -228,14 +230,14 @@ namespace MasterMind
                 {
                     MessageBox.Show("Przegrałeś!");
                     break;
-                   
+
                 }
                 bigPieces[y, guess].Visibility = Visibility.Visible;
-               
+
             }
         }
         public void RestartGame()
-        {      
+        {
             SetupGame();
         }
 
@@ -243,10 +245,10 @@ namespace MasterMind
 
         private void Button_Click_Menu(object sender, RoutedEventArgs e)
         {
-            MainWindow menu = new MainWindow();
-            menu.Show();
-            this.Close();
+
+            this.Content = new Menu();
 
         }
     }
 }
+
