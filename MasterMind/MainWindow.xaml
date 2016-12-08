@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MasterMind"
         mc:Ignorable="d"
-         Title="MasterMind" Width="360" Height="700" MaxWidth="360" MaxHeight="700" >
-
+         Title="MasterMind" Width="360" Height="700" MaxWidth="360" MinWidth="360" MaxHeight="700" MinHeight="700"
+        Icon="img/ikona.ico">
+    
     <Window.Background>
         <ImageBrush ImageSource="img/Background.jpg" />
     </Window.Background>

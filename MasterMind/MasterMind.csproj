@@ -150,6 +150,7 @@
     <Content Include="img\exit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="img\ikona.ico" />
     <Content Include="img\instrukcja.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
