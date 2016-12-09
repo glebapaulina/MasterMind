@@ -36,18 +36,23 @@
                 <RowDefinition />
 
             </Grid.RowDefinitions>
-            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="300"/>
 
 
-            <Button Grid.ColumnSpan="3" Click="Button_Click" Grid.Column="1" Margin="0,21.6,50,26.4" Grid.Row="10" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+
+            <Button Grid.ColumnSpan="4" Name ="Check" Click="Button_Click_Check" Margin="52,22.8,43.8,25" Grid.Row="10" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
                 <Button.Background>
                     <ImageBrush ImageSource="img/sprawdz.png"></ImageBrush>
                 </Button.Background>
             </Button>
 
-            <Button Click="Button_Click_Menu" Grid.Column="3" Margin="50,55.8,0.4,33" Grid.Row="10" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="4" Grid.RowSpan="2">
+            <Button  Click="Button_Click_Menu" Grid.Column="3" Margin="52,22.8,0.4,5.2" Grid.Row="10" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="4">
                 <Button.Background>
                     <ImageBrush ImageSource="img/menu.png"></ImageBrush>
+                </Button.Background>
+            </Button>
+            <Button  Click="Button_Click_Key" Grid.ColumnSpan="4" Grid.Column="3" Margin="54,40.8,10.4,25" Grid.Row="10" Grid.RowSpan="2" >
+                <Button.Background>
+                    <ImageBrush ImageSource="img\key.png"></ImageBrush>
                 </Button.Background>
             </Button>
 

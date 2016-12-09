@@ -20,8 +20,8 @@ namespace MasterMind
     /// </summary>
     public partial class Gameboard : UserControl
     {
-
-        public Brush[] coloursToGuess = new Brush[4];
+      
+        private Brush[] coloursToGuess = new Brush[4];
         Ellipse[,] bigPieces = new Ellipse[4, 11];
         Ellipse[,] smallPieces = new Ellipse[4, 11];
         int guess = -1;
@@ -78,11 +78,7 @@ namespace MasterMind
                 }
             }
 
-            //widoczność do testów
-            bigPieces[0, 10].Visibility = Visibility.Visible;
-            bigPieces[1, 10].Visibility = Visibility.Visible;
-            bigPieces[2, 10].Visibility = Visibility.Visible;
-            bigPieces[3, 10].Visibility = Visibility.Visible;
+            
 
             //rysownaie planszy
             SetupGame();
@@ -95,10 +91,11 @@ namespace MasterMind
             bigPieces[1, 10].Fill = coloursToGuess[1];
             bigPieces[2, 10].Fill = coloursToGuess[2];
             bigPieces[3, 10].Fill = coloursToGuess[3];
+
         }
 
         //zmiana koloru kółka po kliknieciu
-        public void Piece_Clicked(object sender, MouseButtonEventArgs e)
+        private void Piece_Clicked(object sender, MouseButtonEventArgs e)
         {
             Ellipse piece = sender as Ellipse;
             piece.Tag = (int)piece.Tag + 1;
@@ -106,12 +103,13 @@ namespace MasterMind
             {
                 piece.Tag = 0;
             }
+           
             piece.Fill = intToBrush((int)piece.Tag);
 
         }
 
         //logika sprawdzania odpowiedzi
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
             int correct = 0;
             bool[] corrects = new bool[4];
@@ -125,13 +123,10 @@ namespace MasterMind
                 {
                     correct += 1;
                     corrects[x] = true;
+                
                 }
 
-                if (correct == 4)
-                {
-                    MessageBox.Show("Wygrales");
-                    RestartGame();
-                }
+               
             }
             for (int x = 0; x < 4; x++)
             {
@@ -143,9 +138,19 @@ namespace MasterMind
                         {
                             correctColour += 1;
                             correctColours[i] = true;
+                           
                         }
                     }
                 }
+                bigPieces[x, guess].IsEnabled = false;
+            }
+            if (correct == 4)
+            {
+                MessageBox.Show("Wygrałeś!");
+                
+                this.Check.IsEnabled = false;
+                //break;
+
             }
 
             //wypełnianie małych kółek odpowiednim kolorem 
@@ -161,13 +166,15 @@ namespace MasterMind
                 smallPieces[x, guess].Fill = Brushes.Black;
 
             }
-
-            NextGuess();
-
+            if (correct != 4)
+            {
+                NextGuess();
+            }
         }
 
+
         //zmiana koloru na int
-        public Brush intToBrush(int num)
+        private Brush intToBrush(int num)
         {
             switch (num)
             {
@@ -214,7 +221,7 @@ namespace MasterMind
         }
 
         //odblokowywanie nastepnego wiersza, blokowanie poprzedniego
-        public void NextGuess()
+        private void NextGuess()
         {
             if (guess > -1)
             {
@@ -226,19 +233,21 @@ namespace MasterMind
             guess += 1;
             for (int y = 0; y < 4; y++)
             {
-                if (guess > 9)
-                {
-                    MessageBox.Show("Przegrałeś!");
-                    break;
-
-                }
+                
                 bigPieces[y, guess].Visibility = Visibility.Visible;
-
             }
-        }
-        public void RestartGame()
-        {
-            SetupGame();
+           
+            if (guess > 9)
+            {
+                MessageBox.Show("Przegrałeś :(");
+                this.Check.IsEnabled = false;
+                for (int y = 0; y < 4; y++)
+                {
+                    bigPieces[y, guess].IsEnabled = false;
+                }
+                           
+            }
+
         }
 
         //powrót do menu
@@ -248,6 +257,15 @@ namespace MasterMind
 
             this.Content = new Menu();
 
+        }
+        private void Button_Click_Key(object sender, RoutedEventArgs e)
+        {
+            //ujawnienie klucza
+            for (int y = 0; y < 4; y++)
+            {
+                bigPieces[y, 10].Visibility = Visibility.Visible;
+                bigPieces[y, 10].IsEnabled = false;
+            }
         }
     }
 }
