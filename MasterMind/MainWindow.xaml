@@ -3,20 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MasterMind"
-      
+        xmlns:local="clr-namespace:MasterMind"   
         mc:Ignorable="d"
-         Title="MasterMind" Width="360" Height="700" MaxWidth="360" MinWidth="360" MaxHeight="700" MinHeight="700"
+        Title="MasterMind" Width="360" Height="700" MaxWidth="360" MinWidth="360" MaxHeight="700" MinHeight="700"
         Icon="img/ikona.ico">
-        
 
     <Window.Background>
-            <ImageBrush ImageSource="img/Background.jpg" />
+        <ImageBrush ImageSource="img/Background.jpg" />
     </Window.Background>
 
     <Grid>
-
-
-
     </Grid>
 </Window>

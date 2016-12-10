@@ -6,31 +6,23 @@
              xmlns:local="clr-namespace:MasterMind"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="360">
-
-
     <Grid>
-
         <Button Click="Button_Click_Start"  Margin="127,195,133.6,443.4">
             <Button.Background>
                 <ImageBrush ImageSource="img\start.png"></ImageBrush>
             </Button.Background>
         </Button>
-
         <Button Margin="91,227,93.6,412.4">
             <Button.Background>
                 <ImageBrush ImageSource="img\instrukcja.png"></ImageBrush>
             </Button.Background>
         </Button>
-
         <Button  Click="Button_Click_Exit" Margin="116,258,133.6,364.4">
             <Button.Background>
                 <ImageBrush ImageSource="img\exit.png"></ImageBrush>
             </Button.Background>
         </Button>
-
         <Image Source="img\brain.png" Margin="0,339,6.6,28.4" RenderTransformOrigin="0.5,0.5"></Image>
         <Image Source="img\mastermind.png" Margin="-2,41,-15.4,479.4" RenderTransformOrigin="0.5,0.5"></Image>
-
-
     </Grid>
 </UserControl>

@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MasterMind
@@ -20,7 +13,6 @@ namespace MasterMind
     /// </summary>
     public partial class Gameboard : UserControl
     {
-      
         private Brush[] coloursToGuess = new Brush[4];
         Ellipse[,] bigPieces = new Ellipse[4, 11];
         Ellipse[,] smallPieces = new Ellipse[4, 11];
@@ -30,12 +22,9 @@ namespace MasterMind
 
             InitializeComponent();
 
-
-
             //rysowanie dużych kółek
             for (int y = 0; y < 4; y++)
             {
-
                 for (int x = 0; x < 11; x++)
                 {
                     Ellipse piece = new Ellipse();
@@ -47,9 +36,7 @@ namespace MasterMind
                     bigPieces[y, x] = piece;
                     piece.Tag = 0;
                     piece.MouseDown += new MouseButtonEventHandler(Piece_Clicked);
-
                 }
-
             }
 
             //rysowanie małych kółek
@@ -74,11 +61,8 @@ namespace MasterMind
                     piece2.Visibility = System.Windows.Visibility.Hidden;
                     stack.Children.Add(piece2);
                     smallPieces[y + 1, x] = piece2;
-
                 }
             }
-
-            
 
             //rysownaie planszy
             SetupGame();
@@ -99,13 +83,13 @@ namespace MasterMind
         {
             Ellipse piece = sender as Ellipse;
             piece.Tag = (int)piece.Tag + 1;
+
             if ((int)piece.Tag > 5)
             {
                 piece.Tag = 0;
             }
-           
-            piece.Fill = intToBrush((int)piece.Tag);
 
+            piece.Fill = intToBrush((int)piece.Tag);
         }
 
         //logika sprawdzania odpowiedzi
@@ -123,11 +107,10 @@ namespace MasterMind
                 {
                     correct += 1;
                     corrects[x] = true;
-                
-                }
 
-               
+                }
             }
+
             for (int x = 0; x < 4; x++)
             {
                 for (int i = 0; i < 4; i++)
@@ -138,7 +121,6 @@ namespace MasterMind
                         {
                             correctColour += 1;
                             correctColours[i] = true;
-                           
                         }
                     }
                 }
@@ -147,10 +129,7 @@ namespace MasterMind
             if (correct == 4)
             {
                 MessageBox.Show("Wygrałeś!");
-                
-                this.Check.IsEnabled = false;
-                //break;
-
+                this.Check.IsEnabled = false;             
             }
 
             //wypełnianie małych kółek odpowiednim kolorem 
@@ -166,6 +145,7 @@ namespace MasterMind
                 smallPieces[x, guess].Fill = Brushes.Black;
 
             }
+
             if (correct != 4)
             {
                 NextGuess();
@@ -183,7 +163,7 @@ namespace MasterMind
                 case 2:
                     return Brushes.Blue;
                 case 3:
-                    return Brushes.LightGreen;
+                    return Brushes.Green;
                 case 4:
                     return Brushes.Red;
                 case 5:
@@ -191,7 +171,6 @@ namespace MasterMind
                 default:
                     return Brushes.Purple;
             }
-
         }
 
         //losowanie bez powtorzen kolorow do klucza
@@ -199,8 +178,8 @@ namespace MasterMind
         {
             var nums = Enumerable.Range(0, 6).ToArray();
             var rnd = new Random();
-
             int i = 0;
+
             for (i = 0; i < nums.Length; ++i)
             {
                 int randomIndex = rnd.Next(nums.Length);
@@ -211,15 +190,16 @@ namespace MasterMind
 
             Random rand = new Random();
             i = 0;
+
             for (int x = 0; x < 4; x++)
             {
                 coloursToGuess[x] = intToBrush(nums[i]);
                 i++;
             }
-            return null;
 
+            return null;          
         }
-
+    
         //odblokowywanie nastepnego wiersza, blokowanie poprzedniego
         private void NextGuess()
         {
@@ -231,33 +211,30 @@ namespace MasterMind
                 }
             }
             guess += 1;
+
             for (int y = 0; y < 4; y++)
             {
-                
                 bigPieces[y, guess].Visibility = Visibility.Visible;
             }
-           
+
             if (guess > 9)
             {
                 MessageBox.Show("Przegrałeś :(");
                 this.Check.IsEnabled = false;
+
                 for (int y = 0; y < 4; y++)
                 {
                     bigPieces[y, guess].IsEnabled = false;
                 }
-                           
             }
-
         }
 
         //powrót do menu
-
         private void Button_Click_Menu(object sender, RoutedEventArgs e)
         {
-
             this.Content = new Menu();
-
         }
+
         private void Button_Click_Key(object sender, RoutedEventArgs e)
         {
             //ujawnienie klucza
