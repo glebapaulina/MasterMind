@@ -40,7 +40,7 @@
             <Setter Property="StrokeThickness" Value="1" />
             <Setter Property="Margin" Value="0,7,0,0" />
         </Style>
-       <Style TargetType="TextBlock">
+        <Style TargetType="TextBlock" x:Name="instruction">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="Margin" Value="30" />
             <Setter Property="TextWrapping" Value="Wrap" />
@@ -50,37 +50,42 @@
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
-    <!--     <Style TargetType="ScrollViewer" x:Name="viewer">
+        <!--   <Style TargetType="ScrollViewer" x:Name="viewer">
             <Setter Property="Height" Value="600" />
         </Style>-->
-     <Style TargetType="ScrollBar">
+        <Style TargetType="ScrollBar">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Focusable" Value="false"/>
         </Style>
-
-    <!--<Style TargetType="{x:Type toolkit:MessageBox}">
-            
-            
-            <Setter Property="OkButtonStyle" Value="{StaticResource OkButtonStyle}"/>
-        </Style>
--->
         <Style x:Key="MyOkButtonStyle" TargetType="Button">
-         <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="Margin" Value="10" />
-        </Style>
-        <Style x:Key="MyCloseButtonStyle" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.9" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="Margin" Value="10" />
-        </Style>
-        <Style TargetType="{x:Type toolkit:MessageBox}" x:Key="MessageBoxStyle">
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="BorderBrush" Value="Red" />
-            <Setter Property="CloseButtonStyle" Value="{StaticResource MyCloseButtonStyle}"/>
-            <Setter Property="WindowOpacity" Value="0.3" />
-            <Setter Property="Height" Value="180" />
-          <!--  <Setter Property="OkButtonStyle" Value="{StaticResource MyOkButtonStyle}"/>-->
+            <Setter Property="Visibility" Value="Visible" />
         </Style>
 
+        <Style TargetType="{x:Type toolkit:MessageBox}" x:Key="MessageBoxStyle">
+            <Setter Property="BorderBrush" Value="Red" />
+            <Setter Property="WindowOpacity" Value="0.3" />
+            <Setter Property="Height" Value="300" />
+            <Setter Property="OkButtonContent" Value="OK"/>
+            <Setter Property="FontFamily" Value="fonts/#KG Somebody That I Used To Know"/>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="OkButtonStyle" Value="{StaticResource MyOkButtonStyle}"/>
+        </Style>
     </Application.Resources>
 </Application>

@@ -48,6 +48,7 @@ namespace MasterMind
 
                 for (int x = 0; x < 10; x++)
                 {
+                    //tworzenie stack panelu do przechowywania kółek podpowiedzi
                     StackPanel stack = new StackPanel();
                     theGrid.Children.Add(stack);
                     Grid.SetColumn(stack, y + 5);
@@ -131,9 +132,7 @@ namespace MasterMind
             }
             if (correct == 4)
             {
-               MessageBoxResult result2 = Xceed.Wpf.Toolkit.MessageBox.Show("Hello world!", "Extended WPF ToolKit MessageBox", MessageBoxButton.OK);
-               
-                // MessageBox.Show("Wygrałeś!");
+                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Wygrałeś! :)", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
                 this.Check.IsEnabled = false;
             }
 
@@ -223,17 +222,13 @@ namespace MasterMind
             }
 
             if (guess > 9)
-            {
-                // MessageBoxResult _result = Xceed.Wpf.Toolkit.MessageBox.Show("Clear db?", "Import Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question, this.FindResource("ClearDbMessageBoxStyle1") as Style);
-                //  MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :(", MessageBoxsButton.OK);
-                //  result.WindowStyle = (Style)System.Windows.Application.Current.FindResource("Lost");box
-                MessageBoxResult _result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :(", "wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
+            {            
+               MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :(", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);         
                 Check.IsEnabled = false;
                 for (int y = 0; y < 4; y++)
                 {
                     bigPieces[y, guess].IsEnabled = false;
                 }
-
             }
         }
 

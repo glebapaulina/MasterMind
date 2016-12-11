@@ -15,7 +15,7 @@
         </Button>
         
         <ScrollViewer Margin="0,78,0,24" Height="Auto">
-            <TextBlock Loaded="TextBlock_Loaded" Text="Initial" x:Name="viewer" />
+            <TextBlock Loaded="TextBlock_Loaded" x:Name="instruction" />
         </ScrollViewer>
 
 

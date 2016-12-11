@@ -19,12 +19,14 @@ namespace MasterMind
             this.Content = new Gameboard();
         }
 
+        //wyjście z aplikacji
         private void Button_Click_Exit(object sender, RoutedEventArgs e)
         {
             Window parentWindow = Window.GetWindow(this);
             parentWindow.Close();
         }
 
+        //przejście do instrukcji
         private void Button_Click_Instruction(object sender, RoutedEventArgs e)
         {
             this.Content = new Instruction();

@@ -10,8 +10,12 @@ namespace MasterMind
     {
         public MainWindow()
         {
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
+
+            //ustalenie początkowej lokalizacji okna aplikacji
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
+            //uruchamianie widoku menu
             this.Content = new Menu();
         }
 
