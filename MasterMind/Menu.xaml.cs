@@ -23,5 +23,10 @@ namespace MasterMind
             Window parentWindow = Window.GetWindow(this);
             parentWindow.Close();
         }
+
+        private void Button_Click_Instruction(object sender, RoutedEventArgs e)
+        {
+            this.Content = new Instruction();
+        }
     }
 }
