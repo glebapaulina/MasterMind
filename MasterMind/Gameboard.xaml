@@ -9,6 +9,7 @@
              d:DesignHeight="700" d:DesignWidth="360">
 
     <Grid>
+        <!-- siatka planszy -->
         <Grid x:Name="theGrid" Margin="20,20,30,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="56*"/>
@@ -45,9 +46,10 @@
                     <ImageBrush ImageSource="img/menu.png"></ImageBrush>
                 </Button.Background>
             </Button>
+            
             <Button  Click="Button_Click_Key" Grid.ColumnSpan="4" Grid.Column="3" Margin="54,40.8,10.4,25" Grid.Row="10" Grid.RowSpan="2" >
                 <Button.Background>
-                    <ImageBrush ImageSource="img\key.png"></ImageBrush>
+                    <ImageBrush ImageSource="img/key.png"></ImageBrush>
                 </Button.Background>
             </Button>
 

@@ -54,12 +54,14 @@ namespace MasterMind
                     Grid.SetColumn(stack, y + 5);
                     Grid.SetRow(stack, x);
 
+                    //wypełnianie pierwszego rzedu podpowiedźi
                     Ellipse piece = new Ellipse();
                     piece.Style = (Style)FindResource("SmallPiece");
                     piece.Visibility = System.Windows.Visibility.Hidden;
                     stack.Children.Add(piece);
                     smallPieces[y, x] = piece;
 
+                    //wypełnianie dugiego rzędu podpowiedzi
                     Ellipse piece2 = new Ellipse();
                     piece2.Style = (Style)FindResource("SmallPiece");
                     piece2.Visibility = System.Windows.Visibility.Hidden;
@@ -132,11 +134,12 @@ namespace MasterMind
             }
             if (correct == 4)
             {
+                //wyświetlanie informacji o wygranej
                 MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Wygrałeś! :)", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
                 this.Check.IsEnabled = false;
             }
 
-            //wypełnianie małych kółek odpowiednim kolorem 
+            //wypełnianie małych kółek odpowiednim kolorem i uruchaminie widoczności
             for (int x = 0; x < correct; x++)
             {
                 smallPieces[x, guess].Visibility = Visibility.Visible;
@@ -222,8 +225,9 @@ namespace MasterMind
             }
 
             if (guess > 9)
-            {            
-               MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :(", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);         
+            {
+                //wyświetlanie informacji o przegranej
+                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :(", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
                 Check.IsEnabled = false;
                 for (int y = 0; y < 4; y++)
                 {
