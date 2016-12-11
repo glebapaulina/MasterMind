@@ -2,11 +2,9 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Xceed.Wpf.Toolkit;
 
 
 namespace MasterMind
@@ -135,7 +133,7 @@ namespace MasterMind
             if (correct == 4)
             {
                 //wyświetlanie informacji o wygranej
-                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Wygrałeś! :)", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
+                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Wygrałeś! :) \nWciśnij MENU aby zagrać jeszcze raz! ", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
                 this.Check.IsEnabled = false;
             }
 
@@ -227,7 +225,7 @@ namespace MasterMind
             if (guess > 9)
             {
                 //wyświetlanie informacji o przegranej
-                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :(", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
+                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :( \nWciśnij MENU aby spróbować jeszcze raz!", "Wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
                 Check.IsEnabled = false;
                 for (int y = 0; y < 4; y++)
                 {
@@ -242,9 +240,10 @@ namespace MasterMind
             this.Content = new Menu();
         }
 
+        //ujawnienie klucza
         private void Button_Click_Key(object sender, RoutedEventArgs e)
         {
-            //ujawnienie klucza
+
             for (int y = 0; y < 4; y++)
             {
                 bigPieces[y, 10].Visibility = Visibility.Visible;
