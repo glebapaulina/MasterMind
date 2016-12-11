@@ -5,11 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MasterMind"
              mc:Ignorable="d" 
-              d:DesignHeight="700" d:DesignWidth="360">
+             d:DesignHeight="700" d:DesignWidth="360">
     <Grid>
-        <ScrollViewer>
-            <TextBlock x:Name ="instruction" Loaded="TextBlock_Loaded"   Text="Initial" />
+        <Button  Click="Button_Click_Back" Margin="105,29,130,592" >
+            <Button.Background>
+                <ImageBrush ImageSource="img\back.png"></ImageBrush>
+            </Button.Background>
+        </Button>
+        
+        <ScrollViewer Margin="0,78,0,24" Height="Auto">
+            <TextBlock x:Name ="instruction" Loaded="TextBlock_Loaded" Text="Initial" />
         </ScrollViewer>
-       
+
+
     </Grid>
 </UserControl>

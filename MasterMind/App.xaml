@@ -42,12 +42,15 @@
         <Style TargetType="TextBlock" x:Name="instruction">
             <Setter Property="Margin" Value="30" />
             <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="TextBlock.FontFamily" Value="img/#RawengulkBold"/>
+            <Setter Property="TextBlock.FontFamily" Value="fonts/#KG Somebody That I Used To Know"/>
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontWeight" Value="Bold" />
 
+        </Style>
+        <Style TargetType="ScrollViewer">
+            <Setter Property="Height" Value="600" />
         </Style>
         <Style TargetType="ScrollBar">
             <Setter Property="OverridesDefaultStyle" Value="true"/>

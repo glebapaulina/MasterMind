@@ -124,7 +124,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="img\RawengulkBold.otf" />
+    <Resource Include="fonts\KGSomebodyThatIUsedToKnow.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -150,6 +150,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\back.png" />
     <Content Include="img\Background.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -164,7 +165,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="img\key.png" />
-    <Resource Include="img\instrukcjatekst.png" />
     <Content Include="img\mastermind.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
