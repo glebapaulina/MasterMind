@@ -2,16 +2,19 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
+
 
 namespace MasterMind
 {
     /// <summary>
     /// Interaction logic for Gameboard.xaml
     /// </summary>
-    public partial class Gameboard : UserControl
+    public partial class Gameboard : System.Windows.Controls.UserControl
     {
         private Brush[] coloursToGuess = new Brush[4];
         Ellipse[,] bigPieces = new Ellipse[4, 11];
@@ -28,7 +31,7 @@ namespace MasterMind
                 for (int x = 0; x < 11; x++)
                 {
                     Ellipse piece = new Ellipse();
-                    piece.Style = (Style)Application.Current.FindResource("BigPiece");
+                    piece.Style = (Style)System.Windows.Application.Current.FindResource("BigPiece");
                     piece.Visibility = System.Windows.Visibility.Hidden;
                     this.theGrid.Children.Add(piece);
                     Grid.SetColumn(piece, y);
@@ -128,8 +131,10 @@ namespace MasterMind
             }
             if (correct == 4)
             {
-                MessageBox.Show("Wygrałeś!");
-                this.Check.IsEnabled = false;             
+               MessageBoxResult result2 = Xceed.Wpf.Toolkit.MessageBox.Show("Hello world!", "Extended WPF ToolKit MessageBox", MessageBoxButton.OK);
+               
+                // MessageBox.Show("Wygrałeś!");
+                this.Check.IsEnabled = false;
             }
 
             //wypełnianie małych kółek odpowiednim kolorem 
@@ -197,9 +202,9 @@ namespace MasterMind
                 i++;
             }
 
-            return null;          
+            return null;
         }
-    
+
         //odblokowywanie nastepnego wiersza, blokowanie poprzedniego
         private void NextGuess()
         {
@@ -219,13 +224,16 @@ namespace MasterMind
 
             if (guess > 9)
             {
-                MessageBox.Show("Przegrałeś :(");
-                this.Check.IsEnabled = false;
-
+                // MessageBoxResult _result = Xceed.Wpf.Toolkit.MessageBox.Show("Clear db?", "Import Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question, this.FindResource("ClearDbMessageBoxStyle1") as Style);
+                //  MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :(", MessageBoxsButton.OK);
+                //  result.WindowStyle = (Style)System.Windows.Application.Current.FindResource("Lost");box
+                MessageBoxResult _result = Xceed.Wpf.Toolkit.MessageBox.Show("Przegrałeś :(", "wiadomość", MessageBoxButton.OK, this.FindResource("MessageBoxStyle") as Style);
+                Check.IsEnabled = false;
                 for (int y = 0; y < 4; y++)
                 {
                     bigPieces[y, guess].IsEnabled = false;
                 }
+
             }
         }
 

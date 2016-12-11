@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Xceed.Wpf.Toolkit;
 
 namespace MasterMind
 {
@@ -9,8 +10,8 @@ namespace MasterMind
     {
         public MainWindow()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Content = new Menu();
         }
 
